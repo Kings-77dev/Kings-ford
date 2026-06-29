@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Contact from "@/components/sections/Contact";
+import Portrait from "@/components/media/Portrait";
 
 export const metadata: Metadata = {
   title: "About, Kings Ford®",
@@ -40,14 +41,15 @@ export default function AboutPage() {
         {/* ── Mission prose ─────────────────────────────────────────── */}
         <section className="py-[clamp(70px,10vw,150px)]">
           <div className="wrap grid items-start gap-[clamp(36px,6vw,90px)] md:grid-cols-[5fr_7fr]">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[14px] border border-line bg-[linear-gradient(145deg,#3b3126,#1a1611)]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_24%,rgba(195,122,89,.95),transparent_0),linear-gradient(145deg,#3b3126,#1a1611)]" />
-              <div className="absolute bottom-[-8%] right-[9%] h-[70%] w-[52%] rounded-t-[150px] bg-[#211b16]" />
-              <div className="absolute right-[-7%] top-[9%] aspect-square w-[66%] rounded-full bg-[#c37a59] opacity-95" />
-              <span className="absolute bottom-[18px] left-[18px] rounded-full border border-[rgb(243_237_223/0.18)] bg-[rgb(17_13_9/0.85)] px-3 py-[7px] font-mono text-[10px] uppercase tracking-[0.14em] text-cream backdrop-blur-[10px]">
+            <Portrait
+              className="aspect-[4/5] rounded-[14px] border border-line"
+              sizes="(max-width: 768px) 100vw, 40vw"
+              priority
+            >
+              <span className="absolute bottom-[18px] left-[18px] z-[2] rounded-full border border-[rgb(243_237_223/0.18)] bg-[rgb(17_13_9/0.85)] px-3 py-[7px] font-mono text-[10px] uppercase tracking-[0.14em] text-cream backdrop-blur-[10px]">
                 ★ The Hague, NL
               </span>
-            </div>
+            </Portrait>
             <div className="text-[clamp(17px,1.3vw,21px)] leading-[1.6] text-muted">
               <p className="m-0">
                 <strong className="font-medium text-cream">
