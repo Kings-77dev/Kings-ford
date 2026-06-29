@@ -6,31 +6,38 @@ import Contact from "@/components/sections/Contact";
 export const metadata: Metadata = {
   title: "About, Kings Ford®",
   description:
-    "Kings Ford: UI/UX designer and frontend developer in The Hague. Websites, interfaces, and visual systems for small teams trying to make their work easier to understand.",
+    "Kings Ford: a digital product designer and frontend developer in The Hague. I research, design, and build products that solve meaningful problems.",
 };
+
+const BELIEFS = [
+  "Good design fixes the right problem, not just the obvious one.",
+  "Research is where meaningful design begins.",
+  "Technology should remove barriers, not create them.",
+  "An interface only matters when it makes someone’s life better.",
+];
 
 export default function AboutPage() {
   return (
     <>
       <Nav aboutCurrent />
       <main className="pt-[96px]">
+        {/* ── Hero ──────────────────────────────────────────────────── */}
         <section className="border-b border-line py-[clamp(50px,8vw,120px)_clamp(50px,7vw,100px)]">
           <div className="wrap">
             <span className="eyebrow mb-[42px] block">About</span>
-            <h1 className="m-0 max-w-[12ch] text-[clamp(54px,9.5vw,142px)] font-medium leading-[0.94] tracking-[-0.065em]">
-              I&rsquo;m Kings, a designer who likes to{" "}
-              <em className="font-serif font-normal">
-                build the thing
-              </em>
-              .
+            <h1 className="m-0 max-w-[16ch] text-[clamp(48px,8.5vw,132px)] font-medium leading-[0.95] tracking-[-0.06em]">
+              How can I make someone&rsquo;s life{" "}
+              <em className="font-serif font-normal">better</em>?
             </h1>
-            <p className="mt-[42px] max-w-[48ch] text-[clamp(19px,1.7vw,25px)] leading-[1.5] text-muted">
-              A practice from The Hague working in design and frontend, mostly
-              for small teams trying to make their work easier to understand.
+            <p className="mt-[42px] max-w-[52ch] text-[clamp(19px,1.7vw,25px)] leading-[1.5] text-muted">
+              That question first pointed me toward medicine. My path changed,
+              but the question didn&rsquo;t. Today I answer it as a digital
+              product designer and frontend developer.
             </p>
           </div>
         </section>
 
+        {/* ── Mission prose ─────────────────────────────────────────── */}
         <section className="py-[clamp(70px,10vw,150px)]">
           <div className="wrap grid items-start gap-[clamp(36px,6vw,90px)] md:grid-cols-[5fr_7fr]">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[14px] border border-line bg-[linear-gradient(145deg,#3b3126,#1a1611)]">
@@ -44,128 +51,141 @@ export default function AboutPage() {
             <div className="text-[clamp(17px,1.3vw,21px)] leading-[1.6] text-muted">
               <p className="m-0">
                 <strong className="font-medium text-cream">
-                  I design and build websites, interfaces, and visual systems
+                  I don&rsquo;t design because I like making interfaces look
+                  nice.
                 </strong>{" "}
-                , most often for recruitment agencies, design teams, and small
-                SaaS companies. My background is split between UX, visual craft,
-                and frontend, which means I can take a project from a vague
-                problem to a real, shippable thing without bouncing it between
-                three different freelancers.
+                I design because I like solving meaningful problems. Every
+                project starts with understanding the real problem before I
+                propose a solution. Curiosity, empathy, and honesty build better
+                products than assumptions ever do.
               </p>
               <p className="mt-6">
-                I started working independently in 2022 after two years inside a
-                Rotterdam product team. The work I&rsquo;m proudest of is usually
-                quiet, a clearer route through a form, a homepage that
-                doesn&rsquo;t try to do five things at once, a brand that the team
-                can actually use without asking for a designer every time.
-              </p>
-              <p className="mt-6">
-                Outside of client work I&rsquo;m building a small library of personal
-                projects exploring what genuinely useful interface motion can
-                look like, without the spectacle. If any of that overlaps with
-                what you&rsquo;re working on, I&rsquo;d be glad to hear about it.
+                My background runs across research, design, and frontend, so I
+                can take a project from a vague problem to a real, working
+                product without it bouncing between three different people. The
+                way I work is simple: understand deeply, design thoughtfully,
+                build intentionally.
               </p>
             </div>
           </div>
         </section>
 
+        {/* ── What I believe + promise + beyond + next role ─────────── */}
         <section className="bg-[#f1ebdc] py-[clamp(70px,10vw,150px)] text-[#211a12]">
           <div className="wrap">
-            <h2 className="m-0 mb-[52px] max-w-[14ch] text-[clamp(34px,4.8vw,64px)] font-medium leading-[0.98] tracking-[-0.05em]">
-              How I actually work.
+            <span className="block font-mono text-[10px] uppercase tracking-[0.15em] text-[#9a7b53]">
+              What I believe
+            </span>
+            <h2 className="m-0 mt-4 max-w-[14ch] text-[clamp(34px,4.8vw,64px)] font-medium leading-[0.98] tracking-[-0.05em]">
+              Good design fixes the right problem.
             </h2>
-            <div className="border-t border-[rgb(33_26_18/0.18)]">
-              {[
-                [
-                  "01",
-                  "Clarity first, polish second.",
-                  "If the message and the structure aren’t right, no amount of motion or detail will save the page. I’d rather ship something quietly good than something loudly fine.",
-                ],
-                [
-                  "02",
-                  "Build it, don’t just design it.",
-                  "I close the loop between Figma and the real thing. Most projects ship as code I’ve written, which means decisions actually stick.",
-                ],
-                [
-                  "03",
-                  "Small scope, real attention.",
-                  "One project at a time, usually. You’ll know who’s doing the work and how to reach me. No agency layer, no account managers.",
-                ],
-                [
-                  "04",
-                  "The system, not just the screen.",
-                  "I leave teams with a brand, a component set, and a way of working that doesn’t depend on me sticking around forever.",
-                ],
-              ].map(([num, title, copy]) => (
-                <div
-                  key={num}
-                  className="grid items-start gap-[18px] border-b border-[rgb(33_26_18/0.18)] py-[30px] md:grid-cols-[60px_minmax(0,1.1fr)_minmax(0,1.7fr)] md:gap-[30px]"
+            <ul className="m-0 mt-[clamp(36px,5vw,56px)] grid list-none gap-0 border-t border-[rgb(33_26_18/0.18)] p-0">
+              {BELIEFS.map((b) => (
+                <li
+                  key={b}
+                  className="border-b border-[rgb(33_26_18/0.18)] py-6 text-[clamp(18px,2vw,26px)] font-medium leading-[1.35] tracking-[-0.025em]"
                 >
-                  <b className="font-mono text-[11px] font-normal tracking-[0.12em] text-[#9a7b53]">
-                    {num}
-                  </b>
-                  <h3 className="m-0 text-[clamp(21px,2.3vw,30px)] font-medium leading-[1.05] tracking-[-0.035em]">
-                    {title}
-                  </h3>
-                  <p className="m-0 max-w-[54ch] text-[16px] leading-[1.55] text-[#5c5345] md:col-auto">
-                    {copy}
-                  </p>
-                </div>
+                  {b}
+                </li>
               ))}
+            </ul>
+
+            <div className="mt-[clamp(54px,7vw,90px)] grid gap-[clamp(36px,5vw,60px)] md:grid-cols-2">
+              <div className="md:col-span-2">
+                <span className="block font-mono text-[10px] uppercase tracking-[0.15em] text-[#9a7b53]">
+                  My promise
+                </span>
+                <p className="mt-4 max-w-[40ch] text-[clamp(21px,2.4vw,32px)] font-medium leading-[1.25] tracking-[-0.02em]">
+                  I care about the problem as if it were my own. I ask the
+                  difficult questions, challenge assumptions when they need
+                  challenging, and keep refining until the solution genuinely
+                  works.
+                </p>
+              </div>
+              <div>
+                <span className="block font-mono text-[10px] uppercase tracking-[0.15em] text-[#9a7b53]">
+                  Beyond design
+                </span>
+                <p className="mt-4 text-[clamp(16px,1.4vw,19px)] leading-[1.55] text-[#5c5345]">
+                  I care about education, technology, and creating opportunities
+                  for underserved communities in Ghana and across Africa.
+                </p>
+              </div>
+              <div>
+                <span className="block font-mono text-[10px] uppercase tracking-[0.15em] text-[#9a7b53]">
+                  Looking for my next role
+                </span>
+                <p className="mt-4 text-[clamp(16px,1.4vw,19px)] leading-[1.55] text-[#5c5345]">
+                  I want a role where research, design, and frontend come
+                  together on problems that matter, somewhere the right problem
+                  counts as much as the finished screen.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
+        {/* ── Facts ─────────────────────────────────────────────────── */}
         <section className="py-[clamp(70px,10vw,140px)]">
-          <div className="wrap grid gap-[32px] md:grid-cols-3 md:gap-[50px]">
-            {[
-              {
-                k: "Currently",
-                items: [
-                  ["Available for projects", "Q3 to Q4 2026"],
-                  ["Building a personal tool for focus", "Side project"],
-                  ["Reading East of Eden", "Steinbeck"],
-                ],
-              },
-              {
-                k: "Tools",
-                items: [
-                  ["Figma & Framer", "Design, prototypes"],
-                  ["React, Next.js, Astro", "Frontend"],
-                  ["Webflow", "Marketing sites"],
-                ],
-              },
-              {
-                k: "Worked with",
-                items: [
-                  ["Xentys Recruitment", "2026, Website"],
-                  ["ECOASIS", "2025, Service system"],
-                  ["Andreopology Studio", "2026, Web build"],
-                ],
-              },
-            ].map((group) => (
-              <div key={group.k}>
-                <span className="mb-[18px] block font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-                  {group.k}
-                </span>
-                <ul className="m-0 grid list-none gap-[10px] p-0">
-                  {group.items.map(([item, small]) => (
-                    <li key={item} className="font-mono text-[13.5px] text-cream">
-                      {item}
-                      <small className="mt-0.5 block text-[11px] tracking-[0.06em] text-muted">
-                        {small}
-                      </small>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="wrap grid gap-[32px] sm:grid-cols-2 md:grid-cols-4 md:gap-[40px]">
+            <Fact label="Based in" items={[["The Hague, NL", ""]]} />
+            <Fact label="Status" items={[["Open to new roles", "2026"]]} />
+            {/* TODO: Experience, add real history (roles + years) when ready; do not invent. */}
+            <Fact
+              label="Tools"
+              items={[
+                ["Figma & FigJam", "Design, research"],
+                ["Next.js, React, TypeScript", "Frontend"],
+                ["Tailwind CSS", "UI"],
+              ]}
+            />
+            {/* TODO: confirm the tools list above. */}
+            <Fact
+              label="Worked with"
+              items={[
+                ["Xentys", "Recruitment, 2026"],
+                ["Bouwkeet", "Makerspace, 2025"],
+                ["Andreopology Studio", "Photography, 2026"],
+              ]}
+            />
           </div>
+          {/* TODO (optional): add a "What I'm looking for" block once owner confirms
+              ROLE_TYPES (e.g. Product Designer / Design Engineer),
+              TEAM_TYPE (e.g. product teams that value research and ship fast),
+              and LOCATION_PREF (e.g. The Hague / Randstad, hybrid, or remote EU). */}
         </section>
 
         <Contact />
       </main>
       <Footer />
     </>
+  );
+}
+
+function Fact({
+  label,
+  items,
+}: {
+  label: string;
+  items: [string, string][];
+}) {
+  return (
+    <div>
+      <span className="mb-[18px] block font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+        {label}
+      </span>
+      <ul className="m-0 grid list-none gap-[10px] p-0">
+        {items.map(([item, small]) => (
+          <li key={item} className="font-mono text-[13.5px] text-cream">
+            {item}
+            {small && (
+              <small className="mt-0.5 block text-[11px] tracking-[0.06em] text-muted">
+                {small}
+              </small>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -3,14 +3,14 @@ import Image from "next/image";
 import CaseStudyNav, { type NavSection } from "@/components/work/CaseStudyNav";
 
 /**
- * Makerspace Rotterdam case study body, content sourced strictly from the authoritative
- * brief (makerspace-rotterdam_portfolio_case_study.md). A group UX/service-design project,
+ * Bouwkeet case study body, content sourced strictly from the authoritative
+ * brief (bouwkeet_portfolio_case_study.md). A group UX/service-design project,
  * so the copy keeps the collaborative framing. Titled, un-numbered sections
  * with a sticky scroll-spy nav. Image positions are placeholder slots awaiting
  * real images (intended paths recorded on `data-image-path`).
  */
 
-const SLOT = "/assets/makerspace-rotterdam";
+const SLOT = "/assets/bouwkeet";
 
 const SECTIONS: NavSection[] = [
   { id: "overview", label: "Overview" },
@@ -24,7 +24,7 @@ const SECTIONS: NavSection[] = [
   { id: "reflection", label: "Reflection" },
 ];
 
-export default function MakerspaceCaseStudy() {
+export default function BouwkeetCaseStudy() {
   return (
     <>
       <CaseStudyNav sections={SECTIONS} />
@@ -40,7 +40,7 @@ export default function MakerspaceCaseStudy() {
         }
       >
         <p>
-          Makerspace Rotterdam is a makerspace for children aged 8–13, offering hands-on
+          Bouwkeet is a makerspace for children aged 8–13, offering hands-on
           workshops in textiles, ceramics, wood, metal, plastics, and digital
           electronics. The organisation wanted to make the value of these
           workshops more visible, not just the objects children make, but the
@@ -55,7 +55,7 @@ export default function MakerspaceCaseStudy() {
         <blockquote className="my-8 rounded-[14px] border border-[rgb(184_67_31/0.22)] bg-[rgb(184_67_31/0.08)] p-6 font-serif text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.3] tracking-[-0.01em] text-cream">
           How can we help children reflect on their workshop experience in a
           playful way, while making their growth visible to facilitators,
-          parents, and Makerspace Rotterdam?
+          parents, and Bouwkeet?
         </blockquote>
         <p>
           As part of a team, I helped design a connected reflection and
@@ -67,11 +67,11 @@ export default function MakerspaceCaseStudy() {
           layout="row"
           rowH={290}
           images={[
-            { src: `${SLOT}/makerspace-1.jpeg`, alt: "Makerspace Rotterdam: project models by the window", width: 2048, height: 1536 },
-            { src: `${SLOT}/makerspace-2.jpeg`, alt: "Makerspace Rotterdam: workshop with 3D printers", width: 1536, height: 2048 },
-            { src: `${SLOT}/makerspace-3.jpeg`, alt: "Makerspace Rotterdam: the making space", width: 1536, height: 2048 },
+            { src: `${SLOT}/makerspace-1.jpeg`, alt: "Bouwkeet: project models by the window", width: 2048, height: 1536 },
+            { src: `${SLOT}/makerspace-2.jpeg`, alt: "Bouwkeet: workshop with 3D printers", width: 1536, height: 2048 },
+            { src: `${SLOT}/makerspace-3.jpeg`, alt: "Bouwkeet: the making space", width: 1536, height: 2048 },
           ]}
-          caption="Makerspace Rotterdam helps children learn through making; the project focused on making that growth visible."
+          caption="Bouwkeet helps children learn through making; the project focused on making that growth visible."
         />
 
         <h3 className={H3}>My role</h3>
@@ -80,7 +80,7 @@ export default function MakerspaceCaseStudy() {
           contributed across:
         </p>
         <ul className={UL}>
-          <li>understanding the client’s goals and the Makerspace Rotterdam context;</li>
+          <li>understanding the client’s goals and the Bouwkeet context;</li>
           <li>
             ideating concepts around reflection, motivation, and visible growth;
           </li>
@@ -107,7 +107,7 @@ export default function MakerspaceCaseStudy() {
         }
       >
         <p>
-          Makerspace Rotterdam’s workshops create value beyond the final object: confidence,
+          Bouwkeet’s workshops create value beyond the final object: confidence,
           resilience, creativity, collaboration, curiosity, problem-solving, and
           empowerment. The difficulty was that this growth wasn’t easy to see or
           communicate. Four connected problems stood out:
@@ -129,7 +129,7 @@ export default function MakerspaceCaseStudy() {
             making, not feel like schoolwork.
           </li>
           <li>
-            <strong>Makerspace Rotterdam needed evidence of long-term value.</strong> The
+            <strong>Bouwkeet needed evidence of long-term value.</strong> The
             organisation needed a clearer way to show its impact to parents,
             schools, funders, and the wider community.
           </li>
@@ -144,7 +144,7 @@ export default function MakerspaceCaseStudy() {
           <li>
             help parents understand development beyond the final product;
           </li>
-          <li>give Makerspace Rotterdam a clearer way to show the value of making.</li>
+          <li>give Bouwkeet a clearer way to show the value of making.</li>
         </ul>
       </Section>
 
@@ -176,7 +176,7 @@ export default function MakerspaceCaseStudy() {
             the final object.
           </li>
           <li>
-            <strong>Makerspace Rotterdam</strong>: evidence of long-term value for parents,
+            <strong>Bouwkeet</strong>: evidence of long-term value for parents,
             schools, and funders.
           </li>
         </ul>
@@ -200,7 +200,7 @@ export default function MakerspaceCaseStudy() {
 
         <h3 className={H3_CREAM}>Sprint 0: Understanding the problem</h3>
         <p>
-          We started with Makerspace Rotterdam’s mission and the problem space, then explored
+          We started with Bouwkeet’s mission and the problem space, then explored
           early concepts and scored them on fun, value, originality, feasibility,
           and tracking. Two directions emerged, a hero/avatar story and value
           cards with reflection, which we later combined.
@@ -248,7 +248,7 @@ export default function MakerspaceCaseStudy() {
         <h3 className={H3_CREAM}>Sprint 2: Testing and refining the visualisation</h3>
         <p>
           We validated the booklet, scanning flow, dashboard, and Frankenstein in
-          the Makerspace Rotterdam context. Facilitators wanted the booklet less text-heavy
+          the Bouwkeet context. Facilitators wanted the booklet less text-heavy
           and more guided; the dashboard more visual and less numeric, with space
           for private notes; and the Frankenstein clearer about what each body
           part represents.
@@ -280,7 +280,7 @@ export default function MakerspaceCaseStudy() {
         </p>
         <Part
           title="Reflection booklet"
-          body="A personal booklet that follows each child through the programme. Parents set initial goals at registration, children set their own in the first workshop, and after each workshop children reflect on Makerspace Rotterdam’s core values: creativity, collaboration, empowerment, curiosity, and problem-solving."
+          body="A personal booklet that follows each child through the programme. Parents set initial goals at registration, children set their own in the first workshop, and after each workshop children reflect on Bouwkeet’s core values: creativity, collaboration, empowerment, curiosity, and problem-solving."
           purpose="Make reflection personal, visual, and easy to connect across workshops."
         />
         <ImageGrid
@@ -308,7 +308,7 @@ export default function MakerspaceCaseStudy() {
         <Part
           title="Scanning app"
           body="Facilitators scan completed pages on a phone or tablet, using participant, programme, and workshop selection plus image recognition to digitise the booklet input."
-          purpose="Make data capture realistic within Makerspace Rotterdam’s weekly routines."
+          purpose="Make data capture realistic within Bouwkeet’s weekly routines."
         />
         <ImageSlot
           src={`${SLOT}/scanning-app.png`}
@@ -344,7 +344,7 @@ export default function MakerspaceCaseStudy() {
         />
         <Part
           title="Frankenstein growth object"
-          body="A buildable character where each body part represents a Makerspace Rotterdam value or skill. As children progress, the Frankenstein grows and changes."
+          body="A buildable character where each body part represents a Bouwkeet value or skill. As children progress, the Frankenstein grows and changes."
           purpose="Make abstract growth visible, motivating, and non-competitive."
         />
         <ImageSlot
@@ -352,7 +352,7 @@ export default function MakerspaceCaseStudy() {
           width={5073}
           height={2247}
           label="Frankenstein concept"
-          caption="The Frankenstein object translates abstract growth into a playful, physical character, each body part maps to a Makerspace Rotterdam value."
+          caption="The Frankenstein object translates abstract growth into a playful, physical character, each body part maps to a Bouwkeet value."
         />
       </Section>
 
@@ -389,7 +389,7 @@ export default function MakerspaceCaseStudy() {
         <Decision
           title="Keep the dashboard supportive, not judgemental"
           body="Facilitators wanted insight, not a grading tool, so the dashboard supports preparation, observation, and discussion."
-          why="It protects Makerspace Rotterdam’s child-centred ethos and avoids turning creative development into grades."
+          why="It protects Bouwkeet’s child-centred ethos and avoids turning creative development into grades."
         />
         <Decision
           title="Use Frankenstein as a playful growth metaphor"
@@ -494,7 +494,7 @@ export default function MakerspaceCaseStudy() {
             ]}
           />
           <OutcomeCard
-            label="Makerspace Rotterdam"
+            label="Bouwkeet"
             accent
             items={[
               "Communicate the long-term value of its programmes.",
@@ -506,13 +506,13 @@ export default function MakerspaceCaseStudy() {
         <p className="mt-9">
           Across the sprints the scope shifted from “a fun way for children to
           share feelings” toward a connected system that serves children,
-          facilitators, parents, and Makerspace Rotterdam: physical reflection, digital
+          facilitators, parents, and Bouwkeet: physical reflection, digital
           insight, and playful progress in one journey.
         </p>
         <ImageGrid
           layout="feature"
           images={[
-            { src: `${SLOT}/expo-3.jpeg`, alt: "The Makerspace Rotterdam stand at the expo", width: 5120, height: 3840 },
+            { src: `${SLOT}/expo-3.jpeg`, alt: "The Bouwkeet stand at the expo", width: 5120, height: 3840 },
             { src: `${SLOT}/expo-1.jpeg`, alt: "Expo: a visitor scanning a booklet", width: 3024, height: 4032 },
             { src: `${SLOT}/expo-2.jpeg`, alt: "Expo presentation", width: 3840, height: 5120 },
             { src: `${SLOT}/expo-4.jpeg`, alt: "Expo presentation", width: 3024, height: 4032 },
@@ -541,7 +541,7 @@ export default function MakerspaceCaseStudy() {
           The clearest lesson: reflection can’t feel like extra schoolwork. For
           children it has to be playful, visual, and tied to the activity; for
           facilitators, realistic and quick enough to fit the routine; for parents
-          and Makerspace Rotterdam, it has to make growth visible without reducing children to
+          and Bouwkeet, it has to make growth visible without reducing children to
           numbers.
         </p>
         <p>

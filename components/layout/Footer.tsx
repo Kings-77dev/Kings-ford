@@ -9,13 +9,13 @@ export default function Footer() {
   return (
     <footer className="border-t border-[rgb(243_237_223/0.08)] bg-[#0c0a07] pt-12 pb-[25px]">
       <div className="wrap">
-        <div className="grid grid-cols-2 gap-7 sm:grid-cols-[1.5fr_1fr_1fr] lg:grid-cols-[2fr_1fr_1fr_1.4fr]">
+        <div className="grid grid-cols-2 gap-7 sm:grid-cols-[1.5fr_1fr_1.4fr] lg:grid-cols-[2.4fr_1fr_1.4fr]">
           <div className="col-span-2 font-mono text-[18px] font-bold sm:col-span-1">
             KINGS FORD
             <sup className="relative top-[-0.18em] align-top text-[0.52em]">®</sup>
-            <p className="mt-[14px] max-w-[25ch] font-sans text-[14px] font-normal text-muted">
-              UI/UX designer and frontend developer creating clear websites,
-              interfaces, and visual systems.
+            <p className="mt-[14px] max-w-[28ch] font-sans text-[14px] font-normal text-muted">
+              A digital product designer and frontend developer. I research,
+              design, and build products that solve meaningful problems.
             </p>
           </div>
           <div>
@@ -30,25 +30,18 @@ export default function Footer() {
               Contact
             </Link>
           </div>
-          <div>
-            <h4 className={colHead}>For teams</h4>
-            <a className={colLink} href="#">
-              Recruitment agencies
-            </a>
-            <a className={colLink} href="#">
-              Design teams
-            </a>
-          </div>
           <div className="col-span-2 sm:col-span-1">
             <h4 className={colHead}>Elsewhere</h4>
-            <a className={colLink} href="mailto:freshfaya6@yahoo.com">
-              freshfaya6@yahoo.com
+            <a className={colLink} href="mailto:kings.agyei6@gmail.com">
+              kings.agyei6@gmail.com
             </a>
-            <a className={colLink} href="#">
+            <a
+              className={colLink}
+              href="https://www.linkedin.com/in/kingsford-agyei-841b80216/"
+              target="_blank"
+              rel="noreferrer"
+            >
               LinkedIn
-            </a>
-            <a className={colLink} href="#">
-              Book a call
             </a>
           </div>
         </div>

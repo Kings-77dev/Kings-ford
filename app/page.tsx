@@ -1,9 +1,9 @@
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
+import Intro from "@/components/sections/Intro";
 import Work from "@/components/sections/Work";
-import Services from "@/components/sections/Services";
-import Pathways from "@/components/sections/Pathways";
+import WhatIBelieve from "@/components/sections/WhatIBelieve";
 import AboutTeaser from "@/components/sections/AboutTeaser";
 import Contact from "@/components/sections/Contact";
 
@@ -13,9 +13,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Intro />
         <Work />
-        <Services />
-        <Pathways />
+        <WhatIBelieve />
         <AboutTeaser />
         <Contact />
       </main>

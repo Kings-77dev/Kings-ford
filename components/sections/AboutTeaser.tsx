@@ -33,27 +33,30 @@ export default function AboutTeaser() {
 
         <div className="reveal">
           <span className="eyebrow">About</span>
-          <h2 className="m-0 mt-3 max-w-[10ch] text-[clamp(43px,5.7vw,82px)] font-medium leading-[0.93] tracking-[-0.065em]">
-            Design thinking with an eye for{" "}
+          <h2 className="m-0 mt-3 max-w-[12ch] text-[clamp(43px,5.7vw,82px)] font-medium leading-[0.93] tracking-[-0.065em]">
+            How can I make someone&rsquo;s life{" "}
             <em className="font-serif font-normal">
-              execution
+              better
             </em>
-            .
+            ?
           </h2>
           <p className="mt-6 max-w-[59ch] text-[17px] text-muted">
             <strong className="font-medium text-cream">
-              I am Kings, a UI/UX designer and frontend developer based in The
-              Hague.
+              One question drives my work.
             </strong>{" "}
-            I combine UX thinking, visual craft, and development so projects can
-            move from early structure to a buildable final system without losing
-            the original idea.
+            I research, design, and build digital products that try to answer
+            it.
           </p>
           <div className="mt-[30px] flex flex-wrap gap-[18px]">
             <Link className="text-link" href="/about">
-              More about me <ArrowRight />
+              Read more <ArrowRight />
             </Link>
-            <a className="text-link" href="#">
+            <a
+              className="text-link"
+              href="https://www.linkedin.com/in/kingsford-agyei-841b80216/"
+              target="_blank"
+              rel="noreferrer"
+            >
               LinkedIn <ArrowUpRight />
             </a>
           </div>

@@ -27,27 +27,6 @@ export type CaseStudy = Project & {
   full?: boolean;
 };
 
-export type Service = {
-  num: string;
-  title: string;
-  copy: string;
-  scope: string;
-  img: string;
-  imgAlt: string;
-  cta: string;
-  track: string;
-};
-
-export type Pathway = {
-  track: string;
-  eyebrow: string;
-  title: React.ReactNode;
-  copy: string;
-  outcomes: string[];
-  cta: string;
-  gradient: string;
-};
-
 export const projects: Project[] = [
   {
     id: "xentys",
@@ -55,16 +34,16 @@ export const projects: Project[] = [
     img: "/assets/xentys/homepage-after.png",
     title: "Xentys Recruitment",
     subtitle: "UX strategy · Website redesign",
-    copy: "Clearer employer and candidate journeys for a specialist recruitment consultancy.",
+    copy: "A specialist recruitment website rebuilt from research into a clearer, trust-led conversion platform for clients and candidates, now in production for a July 2026 launch.",
     year: "2026",
   },
   {
-    id: "makerspace-rotterdam",
+    id: "bouwkeet",
     num: "02",
-    img: "/assets/makerspace-rotterdam/hero-thumbnail.png",
-    title: "Makerspace Rotterdam",
+    img: "/assets/bouwkeet/hero-thumbnail.png",
+    title: "Bouwkeet",
     subtitle: "Service design · Physical-digital system",
-    copy: "A playful physical-digital reflection system that makes children’s creative growth visible to facilitators, parents, and Makerspace Rotterdam.",
+    copy: "A playful physical-digital reflection system that makes children’s creative growth visible to facilitators, parents, and Bouwkeet.",
     year: "2025",
   },
   {
@@ -109,14 +88,15 @@ export const caseStudies: Record<string, CaseStudy> = {
     lede: "A research-led UX/UI redesign for Xentys, a specialist procurement and supply-chain recruitment agency in The Hague, turning a text-heavy site into a clearer, trust-led experience for two audiences: clients who need to hire, and candidates looking for new roles.",
     client: "Xentys",
     role: "UX research, UX strategy, UI design, prototyping, validation",
-    type: "UX redesign / coded prototype",
+    type: "UX redesign / production build",
     sector: "Recruitment · Procurement · Supply chain",
     tools:
       "Figma, FigJam, Next.js, TypeScript, Tailwind CSS, Plerdy, Google Analytics, Search Console, Lighthouse, WAVE",
-    output: "Research-led UX/UI proposal and coded Next.js hi-fi prototype",
+    output:
+      "Research-led UX/UI redesign, now in production, launching July 2026",
     siteUrl: "xentys.nl",
-    next: "makerspace-rotterdam",
-    nextTitle: <>Makerspace Rotterdam<br />Service design &amp; physical-digital system</>,
+    next: "bouwkeet",
+    nextTitle: <>Bouwkeet<br />Service design &amp; physical-digital system</>,
     caption:
       "Two clear entry points help clients and candidates choose the right journey from the first screen.",
     full: true,
@@ -168,7 +148,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "A dark, gallery-led archive, selected series presented with editorial titles and quiet metadata, so the photography leads.",
     full: true,
   },
-  "makerspace-rotterdam": {
+  "bouwkeet": {
     ...projects[1],
     count: "02 of 05",
     headline: (
@@ -177,8 +157,8 @@ export const caseStudies: Record<string, CaseStudy> = {
         <em>reflection</em>.
       </>
     ),
-    lede: "A group UX and service design project for Makerspace Rotterdam, a children’s makerspace, designing a connected physical-digital reflection system (booklet, stickers, scanning app, facilitator dashboard, and a playful “Frankenstein” growth object) that makes the soft-skill growth behind making visible to facilitators, parents, and the organisation.",
-    client: "Makerspace Rotterdam",
+    lede: "A group UX and service design project for Bouwkeet, a children’s makerspace, designing a connected physical-digital reflection system (booklet, stickers, scanning app, facilitator dashboard, and a playful “Frankenstein” growth object) that makes the soft-skill growth behind making visible to facilitators, parents, and the organisation.",
+    client: "Bouwkeet",
     role: "UX research, concept development, prototyping, testing (group project)",
     type: "Service design / physical-digital system",
     sector: "Creative education · Makerspace · Child-centred design",
@@ -214,35 +194,3 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 };
 
-export const services: Service[] = [
-  {
-    num: "01",
-    title: "Website redesign",
-    copy: "For businesses whose current website no longer reflects the quality of the work or makes the next step easy enough to understand.",
-    scope: "Positioning · hierarchy · responsive UI · frontend build",
-    img: "/assets/service-1.jpg",
-    imgAlt: "Website redesign concept",
-    cta: "Discuss a redesign",
-    track: "service-website-redesign",
-  },
-  {
-    num: "02",
-    title: "Focused landing-page sprint",
-    copy: "For a service, product, or campaign that needs a sharper route from first impression to action without a complete rebuild.",
-    scope: "Messaging · flow · visual direction · responsive build",
-    img: "/assets/service-2.jpg",
-    imgAlt: "Landing page sprint concept",
-    cta: "Discuss a landing page",
-    track: "service-landing-page",
-  },
-  {
-    num: "03",
-    title: "Flexible design support",
-    copy: "For agencies and internal teams that need a dependable extra pair of hands when workload grows or a launch needs momentum.",
-    scope: "UI production · components · frontend · overflow support",
-    img: "/assets/service-3.jpg",
-    imgAlt: "Flexible design support concept",
-    cta: "Explore flexible support",
-    track: "service-overflow",
-  },
-];

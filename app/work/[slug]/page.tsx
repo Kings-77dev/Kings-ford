@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 import Contact from "@/components/sections/Contact";
 import XentysCaseStudy from "@/components/work/XentysCaseStudy";
 import EcoSmokerCaseStudy from "@/components/work/EcoSmokerCaseStudy";
-import MakerspaceCaseStudy from "@/components/work/MakerspaceCaseStudy";
+import BouwkeetCaseStudy from "@/components/work/BouwkeetCaseStudy";
 import FocusCaseStudy from "@/components/work/FocusCaseStudy";
 import AndreopologyCaseStudy from "@/components/work/AndreopologyCaseStudy";
 import { caseStudies } from "@/lib/data";
@@ -163,7 +163,7 @@ export default async function ProjectPage({ params }: Props) {
 
         {full && slug === "xentys" && <XentysCaseStudy />}
         {full && slug === "ecosmoker" && <EcoSmokerCaseStudy />}
-        {full && slug === "makerspace-rotterdam" && <MakerspaceCaseStudy />}
+        {full && slug === "bouwkeet" && <BouwkeetCaseStudy />}
         {full && slug === "focus-tracker" && <FocusCaseStudy />}
         {full && slug === "andreopology" && <AndreopologyCaseStudy />}
 

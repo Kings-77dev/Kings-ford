@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kingsford.example"),
   title: "Kings Ford®: Digital design & frontend",
   description:
-    "Kings Ford: UI/UX designer and frontend developer based in The Hague. Websites, interfaces and visual systems for growing companies.",
+    "A digital product designer and frontend developer based in The Hague. I research, design, and build products that solve meaningful problems.",
 };
 
 export default function RootLayout({

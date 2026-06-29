@@ -56,16 +56,16 @@ export default function Work() {
         <div className="section-top mb-[clamp(60px,7.5vw,120px)] grid grid-cols-1 items-start gap-10 md:grid-cols-[200px_minmax(0,1fr)]">
           <span className="eyebrow">Selected work</span>
           <div>
-            <h2 className="m-0 max-w-[11ch] text-[clamp(40px,5.4vw,78px)] font-medium leading-[0.95] tracking-[-0.06em]">
-              Work that makes the offer{" "}
+            <h2 className="m-0 max-w-[15ch] text-[clamp(40px,5.4vw,78px)] font-medium leading-[0.95] tracking-[-0.06em]">
+              A few problems, and how I{" "}
               <em className="font-serif font-normal">
-                clearer
+                worked through them
               </em>
               .
             </h2>
             <p className="mt-5 max-w-[54ch] text-[17px] text-muted">
-              A focused selection of projects across UX, visual design, spatial
-              experience, and frontend execution.
+              Projects across research, product design, and frontend, from early
+              structure to shipped interface.
             </p>
           </div>
         </div>
@@ -97,6 +97,11 @@ export default function Work() {
                   <p className="mt-[6px] font-mono text-[10px] uppercase tracking-[0.08em] text-muted">
                     {p.subtitle}
                   </p>
+                  {p.id === "xentys" && (
+                    <span className="mt-[9px] inline-flex items-center gap-[7px] font-mono text-[9px] uppercase tracking-[0.13em] text-accent">
+                      <span className="wc-dot" /> Flagship
+                    </span>
+                  )}
                 </div>
                 <span className="font-mono text-[10px] text-muted">
                   {p.year} <ArrowUpRight />
@@ -177,6 +182,11 @@ type Project = (typeof projects)[number];
 function PreviewOverlay({ project }: { project: Project }) {
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-[rgb(10_8_6/0.96)] to-transparent p-7">
+      {project.id === "xentys" && (
+        <span className="mb-3 inline-flex items-center gap-[7px] rounded-full border border-[rgb(184_67_31/0.38)] bg-[rgb(184_67_31/0.12)] px-[11px] py-[5px] font-mono text-[9px] uppercase tracking-[0.14em] text-accent-soft">
+          <span className="wc-dot" /> Now in production
+        </span>
+      )}
       <h3 className="m-0 mb-2 text-[clamp(26px,2.6vw,40px)] font-medium tracking-[-0.07em] text-cream">
         {project.title}
       </h3>

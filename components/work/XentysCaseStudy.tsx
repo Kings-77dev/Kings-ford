@@ -43,6 +43,13 @@ export default function XentysCaseStudy() {
         }
       >
         <p>
+          <strong>
+            What began as a research-led redesign is now being built.
+          </strong>{" "}
+          I&rsquo;m developing the production frontend in Next.js, and the new
+          Xentys site goes live in July 2026.
+        </p>
+        <p>
           Xentys had an existing website with a lot of relevant content, but the
           experience did not clearly communicate the value of the company or
           guide users toward action. The site served two audiences with very
@@ -403,7 +410,7 @@ export default function XentysCaseStudy() {
         cream
         title={
           <>
-            Built in <em>code</em>, not just screens.
+            Built in <em>code</em>, then carried into production.
           </>
         }
       >
@@ -508,21 +515,21 @@ export default function XentysCaseStudy() {
         eyebrow="Outcome"
         title={
           <>
-            A tested proposal for a clearer Xentys.
+            A clearer Xentys, now in production.
           </>
         }
       >
         <p>
-          The outcome was a validated UX/UI proposal and coded Next.js prototype:
-          a clearer structure for both audiences, stronger trust signals,
-          improved vacancy browsing, guided conversion flows, and more reassuring
-          post-submission feedback.
+          The redesign is now in production. I&rsquo;m building the frontend in
+          Next.js, and the new site launches in July 2026. What started as a
+          research-led proposal became a real product: a clearer structure for
+          both audiences, trust signals brought forward, improved vacancy
+          browsing, guided conversion flows, and more reassuring post-submission
+          feedback.
         </p>
         <p>
-          This should be understood as a tested design proposal rather than a
-          fully launched production website. Final content, CMS behaviour,
-          accessibility compliance, and conversion performance would still need
-          to be validated during implementation and after launch.
+          Final content, CMS integration, and accessibility compliance are part
+          of the build, and I&rsquo;ll measure conversion once the site is live.
         </p>
         <VideoSlot
           src={`${SLOT}/home-new.mp4`}
@@ -583,10 +590,11 @@ export default function XentysCaseStudy() {
           beyond static screens.
         </p>
         <p>
-          If the project moved into implementation, the next steps would be to
-          refine the final copy with a UX writer, verify public-facing claims and
-          assets with Xentys, complete technical accessibility testing, connect
-          the flows to a CMS, and measure conversion performance after launch.
+          The project is now in implementation, and I&rsquo;m building it. The
+          next steps are refining final copy, completing technical accessibility
+          testing, connecting the flows to a CMS, and measuring conversion after
+          launch. Carrying a research-led design all the way into a production
+          frontend is exactly the kind of end-to-end work I want to keep doing.
         </p>
       </Section>
     </>
