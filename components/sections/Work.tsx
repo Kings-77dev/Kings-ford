@@ -181,25 +181,39 @@ type Project = (typeof projects)[number];
 
 function PreviewOverlay({ project }: { project: Project }) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-[rgb(10_8_6/0.96)] to-transparent p-7">
+    <div className="pointer-events-none absolute inset-0 z-[2]">
+      {/* Legibility scrim. Sized to the caption ZONE (~80% of the frame), not the
+          text height, and kept near-opaque through where the caption sits before
+          fading out above it. This keeps the title/copy readable over LIGHT or
+          busy images, not just dark ones. Tune the height / stop opacities here. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-[rgb(8_6_4/0.98)] from-[5%] via-[rgb(8_6_4/0.7)] via-[45%] to-transparent"
+      />
+      {/* Status pill, pinned bottom-RIGHT. The Xentys preview is a full webpage
+          screenshot with its own left-aligned copy; keeping the pill on the right
+          and down in the strong scrim keeps it off that text and legible at any
+          viewport (its own backdrop-blur + tint covers the rest). */}
       {project.id === "xentys" && (
-        <span className="mb-3 inline-flex items-center gap-[7px] rounded-full border border-[rgb(184_67_31/0.38)] bg-[rgb(184_67_31/0.12)] px-[11px] py-[5px] font-mono text-[9px] uppercase tracking-[0.14em] text-accent-soft">
+        <span className="absolute bottom-7 right-7 z-[3] inline-flex items-center gap-[7px] rounded-full border border-[rgb(184_67_31/0.55)] bg-[rgb(10_8_6/0.5)] px-[11px] py-[5px] font-mono text-[9px] uppercase tracking-[0.14em] text-accent-soft backdrop-blur-md [text-shadow:0_1px_10px_rgb(0_0_0/0.7)]">
           <span className="wc-dot" /> Now in production
         </span>
       )}
-      <h3 className="m-0 mb-2 text-[clamp(26px,2.6vw,40px)] font-medium tracking-[-0.07em] text-cream">
-        {project.title}
-      </h3>
-      <p className="m-0 mb-4 max-w-[52ch] text-[14px] text-[#cdc4b4]">
-        {project.copy}
-      </p>
-      <Link
-        className="pointer-events-auto inline-flex items-center gap-[9px] font-mono text-[10px] uppercase tracking-[0.12em] text-cream"
-        href={`/work/${project.id}`}
-      >
-        <span className="wc-dot" />
-        View case study <ArrowRight className="h-[1.2em] w-[1.2em] text-accent-soft" />
-      </Link>
+      <div className="absolute inset-x-0 bottom-0 p-7">
+        <h3 className="m-0 mb-2 text-[clamp(26px,2.6vw,40px)] font-medium tracking-[-0.07em] text-cream [text-shadow:0_1px_2px_rgb(0_0_0/0.45),0_2px_26px_rgb(0_0_0/0.55)]">
+          {project.title}
+        </h3>
+        <p className="m-0 mb-4 max-w-[52ch] text-[14px] text-[#d6cdbe] [text-shadow:0_1px_14px_rgb(0_0_0/0.7)]">
+          {project.copy}
+        </p>
+        <Link
+          className="pointer-events-auto inline-flex items-center gap-[9px] font-mono text-[10px] uppercase tracking-[0.12em] text-cream [text-shadow:0_1px_12px_rgb(0_0_0/0.6)]"
+          href={`/work/${project.id}`}
+        >
+          <span className="wc-dot" />
+          View case study <ArrowRight className="h-[1.2em] w-[1.2em] text-accent-soft" />
+        </Link>
+      </div>
     </div>
   );
 }
