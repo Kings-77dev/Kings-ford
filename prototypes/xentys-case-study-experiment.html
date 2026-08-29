@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xentys case study experiment | Kings Ford</title>
+  <meta name="description" content="Standalone visual experiment for the Xentys portfolio case study.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #100d0a;
+      --ink-soft: #17120e;
+      --cream: #f3eddf;
+      --paper: #e9e0d0;
+      --muted: #aaa092;
+      --line: rgba(243, 237, 223, .14);
+      --line-strong: rgba(243, 237, 223, .28);
+      --accent: #b8431f;
+      --accent-soft: #dc8a68;
+      --navy: #0d2b55;
+      --orange: #ffa300;
+      --wrap: min(1360px, calc(100vw - 56px));
+      --body: min(900px, 100%);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, video { display: block; max-width: 100%; }
+    button, a { color: inherit; font: inherit; }
+    a { text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 4px; }
+    ::selection { background: var(--accent); color: white; }
+
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .mono { font-family: "Space Mono", monospace; }
+    .serif { font-family: "Newsreader", serif; font-weight: 400; font-style: italic; }
+    .eyebrow {
+      display: block;
+      color: var(--muted);
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 13, 10, .9);
+      backdrop-filter: blur(16px);
+    }
+    .site-nav .wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { font: 700 12px/1 "Space Mono", monospace; letter-spacing: .1em; }
+    .nav-links { display: flex; gap: 28px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-contact { display: inline-flex; align-items: center; gap: 8px; }
+    .nav-contact::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+    .hero { padding: clamp(64px, 9vw, 128px) 0 clamp(70px, 8vw, 110px); border-bottom: 1px solid var(--line); }
+    .hero-topline { display: flex; justify-content: space-between; gap: 24px; margin-bottom: 50px; }
+    .hero h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(56px, 9vw, 132px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.065em;
+    }
+    .hero-lede {
+      max-width: 62ch;
+      margin: 36px 0 46px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.7vw, 23px);
+      line-height: 1.55;
+    }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+      border-top: 1px solid var(--line);
+      padding: 26px 0 42px;
+    }
+    .fact dt { margin-bottom: 8px; color: var(--muted); font: 10px/1.5 "Space Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .fact dd { margin: 0; font: 13px/1.5 "Space Mono", monospace; }
+
+    .system-collage {
+      display: grid;
+      grid-template-columns: 1.4fr .56fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      height: min(720px, calc(100svh - 170px));
+      min-height: 480px;
+      padding: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #0a172d;
+    }
+    .system-collage figure { margin: 0; overflow: hidden; border-radius: 9px; background: white; }
+    .system-collage img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .system-main { grid-row: 1 / 3; min-height: 0; }
+    .system-detail { min-height: 300px; }
+    .system-detail img { object-fit: contain; padding: 22px; }
+    .hero-board { margin: 0; }
+    .hero-board img { width: 100%; max-height: calc(100svh - 150px); object-fit: contain; }
+    .hero-caption { margin: 13px 0 0; color: var(--muted); font: italic 11px/1.55 "Space Mono", monospace; }
+
+    .chapter-nav {
+      position: sticky;
+      top: 76px;
+      z-index: 80;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 13, 10, .94);
+      scrollbar-width: none;
+    }
+    .chapter-nav::-webkit-scrollbar { display: none; }
+    .chapter-nav .wrap { display: flex; gap: 8px; padding-block: 12px; }
+    .chapter-nav a {
+      flex: 0 0 auto;
+      padding: 9px 13px;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      color: var(--muted);
+      font: 9px/1 "Space Mono", monospace;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .chapter-nav a:hover { color: var(--cream); border-color: var(--line-strong); }
+
+    .section { scroll-margin-top: 140px; padding: clamp(72px, 9vw, 132px) 0; border-bottom: 1px solid var(--line); }
+    .section-grid { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(38px, 7vw, 100px); }
+    .section-copy { max-width: var(--body); }
+    .section h2 {
+      max-width: 17ch;
+      margin: 0 0 34px;
+      font-size: clamp(38px, 5.2vw, 70px);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+    .section h3 { margin: 42px 0 12px; font-size: clamp(22px, 2.5vw, 34px); line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
+    .section p, .section li { color: var(--muted); font-size: clamp(16px, 1.2vw, 18px); line-height: 1.65; }
+    .section p { max-width: 67ch; }
+    .section strong { color: var(--cream); font-weight: 500; }
+    .section ul { max-width: 64ch; padding-left: 20px; }
+
+    .statement {
+      margin: 42px 0;
+      padding: clamp(24px, 4vw, 42px);
+      border-left: 2px solid var(--accent);
+      background: rgba(184, 67, 31, .08);
+      font: 400 clamp(28px, 4vw, 48px)/1.18 "Newsreader", serif;
+    }
+
+    .media { margin: 46px 0 0; }
+    .media img, .media video {
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100svh - 190px);
+      margin-inline: auto;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #0b1930;
+    }
+    .media figcaption { margin-top: 13px; max-width: 68ch; color: var(--muted); font: italic 11px/1.55 "Space Mono", monospace; }
+    .browser { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #0a172d; }
+    .browser-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 13px; border-bottom: 1px solid var(--line); }
+    .browser-bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(243,237,223,.18); }
+    .browser-bar span { margin-left: 10px; color: var(--muted); font: 9px/1 "Space Mono", monospace; }
+    .browser img {
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100svh - 238px);
+      margin-inline: auto;
+      object-fit: contain;
+    }
+
+    .before-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 16px; margin-top: 42px; }
+    .before-card { margin: 0; min-width: 0; }
+    .before-card img { width: 100%; height: 100%; max-height: 520px; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 12px; }
+    .before-card figcaption { margin-top: 11px; color: var(--muted); font: italic 10px/1.5 "Space Mono", monospace; }
+
+    .evidence-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 42px; }
+    .evidence-card { padding: 26px; border-top: 1px solid var(--line-strong); background: rgba(243,237,223,.025); }
+    .evidence-card span { color: var(--accent-soft); font: 10px/1 "Space Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .evidence-card h3 { margin: 16px 0 10px; font-size: 24px; }
+    .evidence-card p { margin: 0; font-size: 15px; }
+
+    .exploration-board {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      margin-top: 42px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: var(--ink-soft);
+    }
+    .exploration-board figure { margin: 0; padding: 18px; border: 1px solid var(--line); background: #1d1813; }
+    .exploration-board figure:first-child { grid-row: 1 / 3; }
+    .exploration-board img { width: 100%; height: 100%; min-height: 210px; object-fit: contain; }
+    .exploration-board figcaption { margin-top: 12px; color: var(--muted); font: 10px/1.5 "Space Mono", monospace; }
+
+    .decision-intro { margin: 80px 0 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .decision-intro b { display: block; margin-bottom: 10px; color: var(--accent); font: 10px/1 "Space Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .decision-intro h3 { margin: 0; font-size: clamp(30px, 4vw, 50px); }
+
+    .decision-row { padding: 26px 0; border-top: 1px solid var(--line); }
+    .decision-row h4 { margin: 0 0 10px; font-size: 22px; font-weight: 500; letter-spacing: -.025em; }
+    .decision-row p { margin: 0; }
+    .why { display: inline; margin-right: 8px; color: var(--accent-soft); font: 9px/1 "Space Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+
+    .support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 42px; }
+    .support-card { margin: 0; }
+    .support-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 10px; background: white; }
+    .support-card figcaption { margin-top: 10px; color: var(--muted); font: 10px/1.5 "Space Mono", monospace; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-grid .support-card img { object-fit: contain; }
+
+    .cream { background: var(--paper); color: #211a12; }
+    .cream .eyebrow, .cream p, .cream li, .cream figcaption { color: #62584d; }
+    .cream strong { color: #211a12; }
+    .cream .media img, .cream .media video { border-color: rgba(33, 26, 18, .18); }
+
+    .testing-note { margin: 34px 0; padding: 16px 18px; border: 1px solid rgba(184,67,31,.38); background: rgba(184,67,31,.08); color: var(--cream); font: 11px/1.6 "Space Mono", monospace; }
+    .comparison-list { display: grid; gap: 26px; margin-top: 42px; }
+    .comparison { display: grid; grid-template-columns: 1fr 56px 1fr; align-items: stretch; gap: 12px; }
+    .comparison-panel { min-height: 260px; padding: 24px; border: 1px solid var(--line); background: #17120e; }
+    .comparison-panel b { display: block; margin-bottom: 22px; color: var(--muted); font: 9px/1 "Space Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .comparison-panel.after { border-color: rgba(184,67,31,.55); }
+    .comparison-panel.after b { color: var(--accent-soft); }
+    .evidence-compare { display: grid; grid-template-columns: 1fr .72fr 1fr; gap: 18px; margin-top: 42px; align-items: center; }
+    .evidence-screen { margin: 0; }
+    .evidence-screen img { width: 100%; max-height: calc(100svh - 220px); object-fit: contain; border: 1px solid var(--line); }
+    .evidence-screen figcaption { margin-top: 10px; color: var(--muted); font: 9px/1.5 "Space Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .evidence-response { padding: 24px; border-left: 2px solid var(--accent); }
+    .evidence-response b { display: block; margin-bottom: 14px; color: var(--accent-soft); font: 10px/1.4 "Space Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .evidence-response p { margin: 0; font-size: 15px; }
+    .comparison-arrow { display: grid; place-items: center; color: var(--accent); font: 24px/1 "Space Mono", monospace; }
+    .ui-sketch { display: grid; gap: 10px; }
+    .ui-line { height: 9px; background: rgba(243,237,223,.13); }
+    .ui-line.short { width: 54%; }
+    .ui-action { width: 48%; min-height: 48px; margin-top: 16px; border: 1px solid rgba(243,237,223,.25); }
+    .after .ui-action { width: 72%; border-color: var(--accent); background: var(--accent); }
+    .filter-sketch { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-sketch i { width: 74px; height: 34px; border: 1px solid rgba(243,237,223,.2); }
+    .after .filter-sketch i:first-child { border-color: var(--orange); background: var(--orange); }
+
+    .outcome-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 44px; border: 1px solid var(--line); background: var(--line); }
+    .outcome-item { min-height: 190px; padding: 28px; background: var(--ink); }
+    .outcome-item span { color: var(--muted); font: 9px/1 "Space Mono", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .outcome-item h3 { margin: 24px 0 8px; font-size: clamp(25px, 3vw, 38px); }
+    .outcome-item h3 b { color: var(--accent-soft); font-family: "Newsreader", serif; font-style: italic; font-weight: 400; }
+
+    .lesson-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .lesson { display: grid; grid-template-columns: 74px 1fr; gap: 22px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+    .lesson > span { color: var(--accent); font: 10px/1.4 "Space Mono", monospace; }
+    .lesson h3 { margin: 0 0 10px; font-size: clamp(24px, 3vw, 36px); }
+    .lesson p { margin: 0; }
+
+    .case-cta { padding: clamp(70px, 10vw, 140px) 0; background: var(--accent); color: #fff3e9; }
+    .case-cta .wrap { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; }
+    .case-cta h2 { max-width: 16ch; margin: 0; font-size: clamp(46px, 7vw, 96px); line-height: .98; letter-spacing: -.06em; font-weight: 500; }
+    .cta-link { display: inline-grid; place-items: center; min-width: 150px; min-height: 150px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; font: 10px/1.4 "Space Mono", monospace; letter-spacing: .12em; text-align: center; text-transform: uppercase; transition: background .25s, color .25s; }
+    .cta-link:hover { background: #fff3e9; color: var(--accent); }
+
+    footer { padding: 34px 0; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; font: 10px/1.6 "Space Mono", monospace; }
+
+    [contenteditable="true"] { border-radius: 2px; }
+    [contenteditable="true"]:hover { box-shadow: 0 0 0 1px rgba(220,138,104,.22); }
+
+    @media (max-width: 900px) {
+      :root { --wrap: min(100% - 36px, 760px); }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .system-collage { height: auto; min-height: 0; grid-template-columns: 1fr 1fr; }
+      .system-main { grid-column: 1 / 3; grid-row: auto; min-height: min(420px, 56svh); }
+      .system-detail { min-height: 240px; }
+      .section-grid { grid-template-columns: 1fr; gap: 18px; }
+      .before-grid, .exploration-board { grid-template-columns: 1fr; }
+      .exploration-board figure:first-child { grid-row: auto; }
+      .support-grid { grid-template-columns: 1fr 1fr; }
+      .evidence-compare { grid-template-columns: 1fr; }
+      .case-cta .wrap { grid-template-columns: 1fr; }
+      .cta-link { min-width: 112px; min-height: 112px; }
+    }
+
+    @media (max-width: 560px) {
+      :root { --wrap: calc(100% - 28px); }
+      .site-nav .wrap { min-height: 66px; }
+      .nav-links a:not(.nav-contact) { display: none; }
+      .hero-topline { margin-bottom: 34px; }
+      .hero h1 { font-size: clamp(50px, 15vw, 72px); line-height: 1.02; }
+      .facts { grid-template-columns: 1fr; }
+      .system-collage { display: block; }
+      .system-collage figure + figure { margin-top: 10px; }
+      .system-main { min-height: 300px; }
+      .system-detail { min-height: 220px; }
+      .chapter-nav { top: 66px; }
+      .evidence-grid, .support-grid, .outcome-grid { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .comparison-arrow { min-height: 38px; transform: rotate(90deg); }
+      .lesson { grid-template-columns: 44px 1fr; gap: 12px; }
+      .media img, .media video { max-height: calc(100svh - 150px); }
+      .browser img { max-height: calc(100svh - 198px); }
+      .case-cta h2 { font-size: 52px; }
+      footer .wrap { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Kings Ford home">KINGS FORD<sup>®</sup></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#story">Story</a>
+        <a href="#outcome">Outcome</a>
+        <a class="nav-contact" href="#contact">Let’s talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="project-title">
+      <div class="wrap">
+        <div class="hero-topline eyebrow"><a href="../">← All work</a><span>Case study · 01 of 05</span></div>
+        <h1 id="project-title" contenteditable="true" data-pretext>Redesigning a specialist recruitment website into a clearer <span class="serif">conversion platform</span>.</h1>
+        <p class="hero-lede" contenteditable="true" data-pretext>A research-led redesign for Xentys, turning a content-heavy website into a clearer, trust-led product for candidates and hiring teams.</p>
+        <dl class="facts">
+          <div class="fact"><dt>Client</dt><dd>Xentys</dd></div>
+          <div class="fact"><dt>Year</dt><dd>2026</dd></div>
+          <div class="fact"><dt>Role</dt><dd>Research · UX/UI · Frontend</dd></div>
+          <div class="fact"><dt>Output</dt><dd>Responsive production build</dd></div>
+        </dl>
+
+        <figure class="hero-board"><img src="../public/assets/xentys/case-study/final/xentys-01-hero-system.webp" alt="Xentys redesigned product system across desktop, mobile, vacancy and recruiter interfaces"></figure>
+        <p class="hero-caption">One connected system: audience routes, vacancy discovery, recruiter trust, guided consultation, and responsive implementation.</p>
+      </div>
+    </section>
+
+    <nav class="chapter-nav" aria-label="Case study sections">
+      <div class="wrap">
+        <a href="#overview">Overview</a><a href="#challenge">Challenge</a><a href="#research">Research</a><a href="#strategy">Strategy</a><a href="#exploration">Exploration</a><a href="#decisions">Design</a><a href="#testing">Evidence</a><a href="#outcome">Outcome</a><a href="#reflection">Reflection</a>
+      </div>
+    </nav>
+
+    <div id="story">
+      <section class="section" id="overview">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Overview</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>Two audiences, one clearer experience.</h2>
+            <p><strong>What began as a research-led redesign moved into production.</strong> I worked across research, strategy, interface design, prototyping, testing, and frontend implementation.</p>
+            <p>Xentys serves two audiences with different goals: hiring managers looking for recruitment support and candidates looking for specialist vacancies. The work connected both journeys through one coherent product system.</p>
+            <blockquote class="statement">Clarity first, trust second, human connection throughout.</blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="challenge">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Previous experience</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>An archive, not a <span class="serif">conversion platform</span>.</h2>
+            <p>The previous site contained valuable specialist content, but candidate and employer journeys competed within the same structure. Trust signals appeared late and important actions lacked guidance.</p>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-02-previous-website.webp" alt="Previous Xentys homepage, vacancy listing and vacancy detail pages"><figcaption>The previous experience combined audiences and relied on search-led navigation.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Research</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>Evidence before interface.</h2>
+            <p>The redesign combined heuristic review, accessibility analysis, analytics, heatmaps, stakeholder interviews, usability testing, and competitor research.</p>
+            <div class="evidence-grid">
+              <article class="evidence-card"><span>01 · Orientation</span><h3>Two routes were competing</h3><p>Visitors could not identify quickly enough whether the experience was relevant to hiring or finding a role.</p></article>
+              <article class="evidence-card"><span>02 · Conversion</span><h3>Contact lacked purpose</h3><p>A generic form did not explain what employers should share or what would happen after submission.</p></article>
+              <article class="evidence-card"><span>03 · Trust</span><h3>People appeared too late</h3><p>Recruiter expertise and human contact were present, but buried deeper in the experience.</p></article>
+              <article class="evidence-card"><span>04 · Discovery</span><h3>Vacancies needed affordance</h3><p>Cards, filtering, result feedback, and application routes needed stronger hierarchy and clearer interaction cues.</p></article>
+            </div>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-03-research-synthesis.png" alt="Xentys research synthesis board, heuristic evaluation, affinity themes and analytics observations"><figcaption>Observation cards were clustered into recurring themes before interface decisions were made.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="strategy">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Strategy</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>Designing a recruitment <span class="serif">system</span>, not isolated pages.</h2>
+            <p>The product was framed as five connected systems: audience routing, vacancy discovery, recruiter trust, employer consultation, and post-submission reassurance.</p>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-04-audience-journeys.png" alt="Candidate and employer journeys through the redesigned Xentys product"><figcaption>Two distinct journeys meet around recruiter ownership, confirmation, and a clear response commitment.</figcaption></figure>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-05-information-architecture.png" alt="Redesigned Xentys information architecture"><figcaption>The information architecture separates employer and candidate needs while preserving one manageable website.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="exploration">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Exploration</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>From evidence to a scalable direction.</h2>
+            <p>This curated board gives the process a visible middle. It connects research structure to interface choices without turning the page into a Figma archive.</p>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-06-exploration-board.webp" alt="Annotated Xentys wireframes connecting research findings to design decisions"><figcaption>Selected wireframes show how audience routing, vacancy detail, contact flows, and trust were explored.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="decisions">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Design decisions</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>One product, five connected systems.</h2>
+
+            <div class="decision-intro"><b>01 · Orientation</b><h3>Two audiences, two clear routes</h3></div>
+            <div class="decision-row"><h4>Separate intent above the fold</h4><p><span class="why">Why it matters</span>Candidates and employers should identify their path without interpreting the whole website first.</p></div>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-01-hero-system.webp" alt="Final Xentys homepage with separate candidate and employer routes"><figcaption>The final homepage separates candidate and employer routes immediately.</figcaption></figure>
+
+            <div class="decision-intro"><b>02 · Candidate system</b><h3>From vacancy search to human application</h3></div>
+            <div class="decision-row"><h4>Scannable cards and practical filters</h4><p><span class="why">Why it matters</span>Role information, filter feedback, and click affordances reduce effort during the highest-frequency candidate task.</p></div>
+            <div class="decision-row"><h4>Recruiter context at the decision point</h4><p><span class="why">Why it matters</span>A named person, direct contact details, and a clear application route make recruitment feel human rather than transactional.</p></div>
+            <figure class="media"><video src="../public/assets/xentys/case-study/video/xentys-07-candidate-journey.mp4" poster="../public/assets/xentys/case-study/video/xentys-07-candidate-journey-poster.webp" muted loop autoplay playsinline controls aria-label="Candidate journey through the redesigned Xentys website"></video><figcaption>Candidate payoff: vacancy discovery, filtering, recruiter context, and application shown as one connected task.</figcaption></figure>
+
+            <div class="decision-intro"><b>03 · Employer system</b><h3>From generic contact to guided consultation</h3></div>
+            <div class="decision-row"><h4>A purposeful vacancy brief</h4><p><span class="why">Why it matters</span>Placement type, role context, urgency, preferences, and clear next steps turn “contact us” into a meaningful hiring action.</p></div>
+            <figure class="media"><video src="../public/assets/xentys/case-study/video/xentys-08-employer-journey.mp4" poster="../public/assets/xentys/case-study/video/xentys-08-employer-journey-poster.webp" muted loop autoplay playsinline controls aria-label="Employer consultation journey through the redesigned Xentys website"></video><figcaption>Employer payoff: a guided vacancy brief with clear expectations, ownership, and confirmation.</figcaption></figure>
+
+            <div class="decision-intro"><b>04 · Trust and reassurance</b><h3>Small details that support both journeys</h3></div>
+            <div class="support-grid trust-grid">
+              <figure class="support-card"><img src="../public/assets/xentys/case-study/trust/xentys-component-recruiter-card.png" alt="Named Xentys recruiter card"><figcaption>Named recruiter ownership at the decision point.</figcaption></figure>
+              <figure class="support-card"><img src="../public/assets/xentys/case-study/trust/xentys-component-response-commitment.png" alt="One working day response commitment component"><figcaption>A visible response expectation, presented as a tested design proposal.</figcaption></figure>
+              <figure class="support-card"><img src="../public/assets/xentys/case-study/trust/xentys-component-contact.png" alt="Direct recruiter contact details"><figcaption>Direct contact routes instead of an anonymous queue.</figcaption></figure>
+              <figure class="support-card"><img src="../public/assets/xentys/case-study/trust/xentys-component-process-steps.png" alt="Post-application process steps"><figcaption>Clear next steps after an application.</figcaption></figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cream" id="implementation">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Implementation</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>Built in <span class="serif">code</span>, tested under real conditions.</h2>
+            <p>The hi-fi design became a responsive Next.js prototype covering navigation, filtering, modal interactions, form flows, active states, and success feedback.</p>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-10-responsive-behaviour.webp" alt="Responsive Xentys homepage at desktop, tablet and mobile sizes"><figcaption>The coded product adapts its hierarchy and interactions across desktop, tablet, and mobile.</figcaption></figure>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-design-tokens.png" alt="Xentys design system with colour, typography, controls, navigation, vacancy cards and recruiter card"><figcaption>Reusable visual and interaction rules carried the redesign into a consistent production system.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="testing">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Evidence to design response</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>Where evidence changed the design.</h2>
+            <p>These comparisons connect research evidence to the resulting interface decisions. They are not presented as traditional usability-testing iterations.</p>
+            <div class="evidence-compare" aria-label="Vacancy research evidence and design response">
+              <figure class="evidence-screen"><img src="../public/assets/xentys/case-study/testing/xentys-11-testing-vacancies-before.png" alt="Previous Xentys vacancy listing"><figcaption>Observed experience</figcaption></figure>
+              <div class="evidence-response"><b>Evidence to design response</b><p><strong>Card 61:</strong> expose salary and useful role information. <strong>Card 81:</strong> make client identity visible. Heatmap evidence also showed 1,273 heading clicks and zero CTA clicks.</p></div>
+              <figure class="evidence-screen"><img src="../public/assets/xentys/case-study/testing/xentys-11-testing-vacancies-after.png" alt="Redesigned Xentys vacancy listing"><figcaption>Design response</figcaption></figure>
+            </div>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-12-testing-iteration-two.png" alt="Evidence and design response comparison for the Xentys employer route"><figcaption>Evidence to design response: the missing employer pathway became a guided vacancy brief with ownership and response expectations.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="outcome">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Outcome</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>A clearer Xentys, carried into production.</h2>
+            <p>Until verified post-launch metrics are available, the outcome should make the product transformation visible without inventing performance claims.</p>
+            <div class="outcome-grid">
+              <article class="outcome-item"><span>Structure</span><h3>Archive <b>to</b> conversion platform</h3></article>
+              <article class="outcome-item"><span>Orientation</span><h3>Mixed audiences <b>to</b> clear routes</h3></article>
+              <article class="outcome-item"><span>Employer action</span><h3>Generic contact <b>to</b> guided consultation</h3></article>
+              <article class="outcome-item"><span>Candidate action</span><h3>Weak affordances <b>to</b> scannable discovery</h3></article>
+              <article class="outcome-item"><span>Trust</span><h3>Hidden people <b>to</b> visible recruiters</h3></article>
+              <article class="outcome-item"><span>Feedback</span><h3>Generic confirmation <b>to</b> clear next steps</h3></article>
+            </div>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-14-before-after.webp" alt="Before and redesigned Xentys homepage comparison"><figcaption>The matching homepage comparison makes the structural and visual transformation immediately visible.</figcaption></figure>
+            <figure class="media"><img src="../public/assets/xentys/case-study/final/xentys-15-final-gallery.webp" alt="Final Xentys homepage, vacancy, employer consultation, and mobile interface gallery"><figcaption>The final gallery closes the story with the production interface across its key journeys.</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reflection">
+        <div class="wrap section-grid">
+          <span class="eyebrow">Reflection</span>
+          <div class="section-copy">
+            <h2 contenteditable="true" data-pretext>What the project changed in how I work.</h2>
+            <div class="lesson-list">
+              <article class="lesson"><span>01</span><div><h3>Research must change structure</h3><p>Evidence is useful when it shapes navigation, hierarchy, content, and interaction, not when it only validates styling.</p></div></article>
+              <article class="lesson"><span>02</span><div><h3>Trust is designed through people and expectations</h3><p>Recruiter visibility, ownership, response timing, and next steps matter as much as visual polish in recruitment.</p></div></article>
+              <article class="lesson"><span>03</span><div><h3>Code exposes what static screens hide</h3><p>Building the prototype revealed responsive, interaction, and implementation issues earlier, while they were still inexpensive to change.</p></div></article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="case-cta" id="contact">
+      <div class="wrap">
+        <h2 contenteditable="true" data-pretext>Working on a complex product that needs to become clearer, more human, and ready to ship?</h2>
+        <a class="cta-link" href="mailto:kings.agyei6@gmail.com">Start a<br>conversation ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© 2026 Kings Ford®</span><span>The Hague, NL · Product design + frontend</span></div></footer>
+
+  <!-- FALLBACK: vendor/pretext.js missing, using CDN -->
+  <script type="module">
+    const editable = [...document.querySelectorAll('[data-pretext]')];
+    let pretext = null;
+    let prepared = new Map();
+
+    async function prepareText() {
+      try {
+        if (!pretext) pretext = await import('https://esm.sh/@chenglou/pretext');
+        await document.fonts.ready;
+        prepared = new Map(editable.map(el => [el, pretext.prepare(el.textContent, getComputedStyle(el).font)]));
+        relayout();
+      } catch (error) {
+        console.info('Pretext unavailable, native browser text layout remains active.');
+      }
+    }
+
+    function relayout() {
+      if (!pretext) return;
+      for (const [el, handle] of prepared) {
+        const style = getComputedStyle(el);
+        const lineHeight = Number.parseFloat(style.lineHeight) || Number.parseFloat(style.fontSize) * 1.15;
+        pretext.layout(handle, el.clientWidth, lineHeight);
+      }
+    }
+
+    for (const el of editable) {
+      new MutationObserver(() => {
+        if (!pretext) return;
+        prepared.set(el, pretext.prepare(el.textContent, getComputedStyle(el).font));
+        relayout();
+      }).observe(el, { characterData: true, subtree: true, childList: true });
+    }
+
+    new ResizeObserver(relayout).observe(document.body);
+    prepareText();
+
+    const links = [...document.querySelectorAll('.chapter-nav a')];
+    const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        links.forEach(link => link.style.cssText = '');
+        const active = links.find(link => link.getAttribute('href') === '#' + entry.target.id);
+        if (active) active.style.cssText = 'color:var(--cream);border-color:var(--line-strong);';
+      }
+    }, { rootMargin: '-35% 0px -55%' });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

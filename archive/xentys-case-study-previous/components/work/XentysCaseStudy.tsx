@@ -1,6 +1,7 @@
 import type React from "react";
 import Image from "next/image";
 import CaseStudyNav, { type NavSection } from "@/components/work/CaseStudyNav";
+import VideoSlot from "@/components/work/VideoSlot";
 
 /**
  * Xentys case study body, content sourced strictly from the authoritative
@@ -12,7 +13,6 @@ import CaseStudyNav, { type NavSection } from "@/components/work/CaseStudyNav";
  */
 
 const SLOT = "/assets/xentys";
-const CASE_STUDY = `${SLOT}/case-study`;
 
 const SECTIONS: NavSection[] = [
   { id: "overview", label: "Overview" },
@@ -20,10 +20,9 @@ const SECTIONS: NavSection[] = [
   { id: "research", label: "Research" },
   { id: "findings", label: "Key Findings" },
   { id: "strategy", label: "Design Strategy" },
-  { id: "exploration", label: "Exploration" },
   { id: "decisions", label: "Design Decisions" },
   { id: "prototype", label: "Prototype" },
-  { id: "testing", label: "Evidence" },
+  { id: "testing", label: "Testing" },
   { id: "outcome", label: "Outcome" },
   { id: "reflection", label: "Reflection" },
 ];
@@ -47,8 +46,8 @@ export default function XentysCaseStudy() {
           <strong>
             What began as a research-led redesign is now being built.
           </strong>{" "}
-          I&rsquo;m developing the production frontend in Next.js and carrying the
-          research-led design into the final build.
+          I&rsquo;m developing the production frontend in Next.js, and the new
+          Xentys site goes live in July 2026.
         </p>
         <p>
           Xentys had an existing website with a lot of relevant content, but the
@@ -152,18 +151,19 @@ export default function XentysCaseStudy() {
           understand where to go, why Xentys was credible, and what step to take
           next.
         </p>
-        <h3 className={H3}>The previous experience</h3>
-        <p>
-          A specialist, content-rich website whose structure had accumulated
-          over time, leaving candidate and employer journeys competing within
-          the same experience.
-        </p>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-02-previous-website.webp`}
-          width={1800}
-          height={1200}
-          label="Previous Xentys website"
-          caption="The previous homepage, vacancy listing, and vacancy detail reveal an experience organised around information rather than distinct conversion routes."
+        <VideoSlot
+          src={`${SLOT}/old-site.mp4`}
+          poster={`${SLOT}/homepage-before.png`}
+          addr="xentys.nl"
+          label="Original Xentys site"
+          caption="A walk through the original Xentys site, content-rich, but built like an archive: no clear split between hiring managers and candidates, and weak routes to action."
+        />
+        <VideoSlot
+          src={`${SLOT}/old-vacancies-and-details.mp4`}
+          poster={`${SLOT}/old-vacancies-poster.png`}
+          addr="xentys.nl/vacancies"
+          label="Original vacancies & vacancy detail"
+          caption="The original vacancy listing and detail pages in motion: text-heavy, with weak affordances and unclear next steps."
         />
       </Section>
 
@@ -215,12 +215,21 @@ export default function XentysCaseStudy() {
             stakeholder priorities and exploring concept directions.
           </li>
         </ul>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-03-research-synthesis.png`}
-          width={1800}
-          height={1200}
-          label="Research synthesis"
-          caption="Observation cards, heuristic findings, affinity themes, and analytics evidence were brought together before interface decisions were made."
+        <ImageSlot
+          src={`${SLOT}/data-cards.png`}
+          width={904}
+          height={410}
+          label="Research data cards"
+          caption="Research findings were translated into data cards and clustered into recurring themes."
+        />
+        <ImageSlot
+          frame
+          addr="xentys.nl"
+          src={`${SLOT}/heatmap.png`}
+          width={936}
+          height={528}
+          label="Behaviour heatmap"
+          caption="Heatmaps and analytics showed how users actually moved through the homepage and vacancies."
         />
       </Section>
 
@@ -288,39 +297,12 @@ export default function XentysCaseStudy() {
           users would be dealing with and what would happen after contact, not
           just describe a company.
         </p>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-04-audience-journeys.png`}
-          width={1920}
-          height={1080}
-          label="Candidate and employer journeys"
-          caption="Two distinct audience routes meet around named recruiter ownership, confirmation, and response expectations."
-        />
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-05-information-architecture.png`}
-          width={1800}
-          height={1200}
+        <ImageSlot
+          src={`${SLOT}/information-architecture.png`}
+          width={2048}
+          height={420}
           label="Information architecture"
-          caption="The redesigned structure separates employer and candidate needs while preserving one manageable website."
-        />
-      </Section>
-
-      <Section
-        id="exploration"
-        eyebrow="Exploration"
-        title={<>From evidence to a scalable direction.</>}
-      >
-        <p>
-          The working middle of the project connected research findings to
-          structural interface choices. Selected wireframes explored audience
-          routing, vacancy detail, contact flows, and where trust should enter
-          each journey.
-        </p>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-06-exploration-board.webp`}
-          width={1800}
-          height={1200}
-          label="Annotated exploration board"
-          caption="Each selected direction is tied back to a research observation rather than presented as visual exploration alone."
+          caption="The redesigned structure separates employer and candidate needs while keeping the website manageable."
         />
       </Section>
 
@@ -339,41 +321,6 @@ export default function XentysCaseStudy() {
           body="Instead of one generic entry point, visitors are guided toward two clear routes (“I need to hire” and “I’m looking for a new role”) so they can identify their path without interpreting the whole site first."
           why="Clients and candidates have different goals. Making that distinction visible above the fold reduces orientation friction."
         />
-        <ImageSlot
-          frame
-          addr="xentys.nl"
-          src={`${SLOT}/homepage-after.png`}
-          width={2880}
-          height={1384}
-          label="Redesigned two-audience homepage"
-          caption="The final homepage separates candidate and employer routes immediately, before either audience has to interpret the full site."
-        />
-
-        <ChapterLabel index="01" title="Candidate experience" />
-        <p>
-          Vacancy discovery became a connected journey rather than a set of
-          isolated screens: candidates can narrow the list, scan meaningful role
-          details, see the recruiter behind the vacancy, and move into a clearer
-          application route.
-        </p>
-        <Decision
-          title="Improved vacancy cards and filters"
-          body="The vacancy listing was redesigned around scannable cards surfacing title, sector, location, placement type, salary or day rate, date posted, and recruiter connection, with practical filters to narrow the list."
-          why="Vacancy browsing is one of the most important candidate tasks. Better cards and filters reduce effort and make the page feel more usable."
-        />
-        <Decision
-          title="Recruiter visibility and clearer application routes"
-          body="Vacancy pages connect each role to a named recruiter and a visible route to apply. Candidates can also submit an open application when no current vacancy matches."
-          why="Recruitment is relationship-led. Showing who candidates will deal with builds trust while the open route keeps the relationship active beyond current listings."
-        />
-        <VideoFigure
-          src={`${CASE_STUDY}/video/xentys-07-candidate-journey.mp4`}
-          poster={`${CASE_STUDY}/video/xentys-07-candidate-journey-poster.webp`}
-          label="Candidate vacancy journey"
-          caption="Vacancies, filtering, updated results, role detail, recruiter context, and a clear application route form one continuous candidate journey."
-        />
-
-        <ChapterLabel index="02" title="Employer experience" />
         <Decision
           title="Employer mega-menu"
           body="Rather than relying on a standalone client overview page, employer-facing content is distributed across the homepage, service pages, consultation flow, and navigation."
@@ -384,54 +331,76 @@ export default function XentysCaseStudy() {
           body="A generic contact form was replaced with a purposeful vacancy-brief flow asking for placement type, role details, urgency, contact preference, and optional vacancy information, and explaining what happens after submission."
           why="The flow reduces ambiguity and makes the action feel specific to hiring, not just “contact us.”"
         />
-        <VideoFigure
-          src={`${CASE_STUDY}/video/xentys-08-employer-journey.mp4`}
-          poster={`${CASE_STUDY}/video/xentys-08-employer-journey-poster.webp`}
-          label="Guided employer consultation journey"
-          caption="A hiring CTA becomes a guided vacancy brief, with representative choices, clear details, and a reassuring success state."
+        <ImageSlot
+          compact
+          src={`${SLOT}/consultation-flow.png`}
+          width={451}
+          height={494}
+          label="Guided consultation flow"
+          caption="The generic contact form became a guided vacancy-brief flow for hiring managers."
         />
-
-        <ChapterLabel index="03" title="Supporting trust and reassurance" />
+        <Decision
+          title="Recruiter visibility"
+          body="Recruiter profiles were added at key decision points, including vacancy pages and consultation moments: each showing a named recruiter, photo, direct contact details, and a short personal line."
+          why="Research showed trust in recruitment is strongly tied to people. Showing the recruiter helps the site feel more personal and credible."
+        />
+        <ImageSlot
+          compact
+          src={`${SLOT}/consultant-card.png`}
+          width={720}
+          height={878}
+          label="Consultant card"
+          caption="Recruiter visibility was added at key decision points to make the experience feel more personal and trustworthy."
+        />
+        <Decision
+          title="Improved vacancy cards & filters"
+          body="The vacancy listing was redesigned around scannable cards surfacing title, sector, location, placement type, salary or day rate, date posted, and recruiter connection, with practical filters to narrow the list."
+          why="Vacancy browsing is one of the most important candidate tasks. Better cards and filters reduce effort and make the page feel more usable."
+        />
+        <VideoSlot
+          src={`${SLOT}/vacancy-listing.mp4`}
+          poster={`${SLOT}/vacancy-listing-poster.png`}
+          addr="xentys.nl/vacancies"
+          label="Vacancy listing"
+          caption="Vacancy cards were redesigned to make role information easier to scan and filter, with practical filters to narrow the list."
+        />
+        <VideoSlot
+          src={`${SLOT}/vacancy-detail-demo.mp4`}
+          poster={`${SLOT}/vacancy-detail-poster.png`}
+          addr="xentys.nl/vacancy"
+          label="Vacancy detail"
+          caption="The vacancy detail page surfaces role information, the assigned recruiter, and a clear path to apply."
+        />
+        <Decision
+          title="Open-application route"
+          body="Candidates can apply for a specific role or submit an open application, giving them a next step even when no current vacancy matches their profile."
+          why="Specialist recruitment isn’t only about live vacancies. The open-application route keeps the relationship open and supports the candidate pipeline."
+        />
+        <VideoSlot
+          src={`${SLOT}/open-application.mp4`}
+          poster={`${SLOT}/open-application-poster.png`}
+          addr="xentys.nl/open-application"
+          label="Open application"
+          caption="Candidates can still take action even when no current vacancy matches their profile. An open application keeps the relationship open."
+        />
         <Decision
           title="Post-submission success states"
           body="Instead of a generic confirmation, success messages explain that the submission was received, who will follow up, expected response timing, and what the user can do next."
           why="Users shouldn’t feel abandoned after submitting important information. Clear feedback builds confidence and reduces uncertainty."
+        />
+        <ImageSlot
+          compact
+          src={`${SLOT}/success-state.png`}
+          width={451}
+          height={375}
+          label="Success state"
+          caption="Post-submission screens explain what happens next, who will respond, and when."
         />
         <Decision
           title="Floating contact menu"
           body="A floating contact button was refined into a small labelled menu: call, email, LinkedIn."
           why="The original phone-icon interpretation was ambiguous. Labelled options make the contact entry point clearer without overwhelming the page."
         />
-        <div className="mt-9 grid gap-5 sm:grid-cols-2">
-          <ImageCard
-            src={`${CASE_STUDY}/trust/xentys-component-recruiter-card.png`}
-            width={680}
-            height={714}
-            label="Visible recruiter"
-            caption="Named recruiter context at a decision point."
-          />
-          <ImageCard
-            src={`${CASE_STUDY}/trust/xentys-component-response-commitment.png`}
-            width={680}
-            height={72}
-            label="Response expectation"
-            caption="A tested one-working-day design proposal presented visibly in the flow."
-          />
-          <ImageCard
-            src={`${CASE_STUDY}/trust/xentys-component-contact.png`}
-            width={680}
-            height={186}
-            label="Contact ownership"
-            caption="Direct recruiter contact instead of an anonymous queue."
-          />
-          <ImageCard
-            src={`${CASE_STUDY}/trust/xentys-component-process-steps.png`}
-            width={720}
-            height={576}
-            label="Process explanation"
-            caption="Clear next steps after an application."
-          />
-        </div>
       </Section>
 
       {/* ── PROTOTYPE (cream) ──────────────────────────────────────────── */}
@@ -464,47 +433,80 @@ export default function XentysCaseStudy() {
           real product and helped reveal implementation-level issues that static
           mockups might not show.
         </p>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-10-responsive-behaviour.webp`}
-          width={1920}
-          height={1080}
-          label="Responsive Xentys implementation"
-          caption="The coded homepage adapts its hierarchy and interaction patterns across desktop, tablet, and mobile."
-          cream
-        />
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-design-tokens.png`}
-          width={3840}
-          height={6216}
-          label="Xentys design tokens"
-          caption="Semantic colour, text, border, spacing, and radius tokens provide a consistent foundation for the production interface."
-          cream
-        />
+        <figure className="m-0 my-9">
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { n: 1, h: 2013 },
+              { n: 2, h: 2303 },
+              { n: 3, h: 2556 },
+            ].map(({ n, h }) => (
+              <Image
+                key={n}
+                src={`${SLOT}/responsive-${n}.png`}
+                alt={`Responsive mobile screen ${n}`}
+                width={1179}
+                height={h}
+                sizes="(min-width: 768px) 220px, 30vw"
+                className="h-auto w-full rounded-[12px] border border-[rgb(33_26_18/0.16)]"
+              />
+            ))}
+          </div>
+          <figcaption className="mt-3 max-w-[60ch] font-mono text-[11px] italic leading-[1.55] text-[#5c5345]">
+            The hi-fi prototype was built responsively: the core flows adapt
+            cleanly to mobile.
+          </figcaption>
+        </figure>
       </Section>
 
-      {/* ── EVIDENCE TO DESIGN RESPONSE ───────────────────────────────── */}
+      {/* ── TESTING ────────────────────────────────────────────────────── */}
       <Section
         id="testing"
-        eyebrow="Evidence to Design Response"
+        eyebrow="Testing"
         title={
           <>
-            Where evidence changed the design.
+            Validated, then refined.
           </>
         }
       >
+        <h3 className={H3}>Lo-fi testing</h3>
         <p>
-          These comparisons connect observed behaviour and research cards to
-          the resulting interface decisions. They are not presented as
-          traditional before-and-after usability-testing iterations.
+          The lo-fi prototype tested the structure of the main journeys before
+          visual design was added, validating the homepage, client pathway,
+          candidate pathway, open application, and internal-recruiter
+          expectations.
         </p>
-        <EvidenceComparison />
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-12-testing-iteration-two.png`}
-          width={1920}
-          height={1080}
-          label="Employer-pathway evidence and design response"
-          caption="The missing employer pathway became a guided vacancy brief with ownership and response expectations."
-        />
+        <h3 className={H3}>Hi-fi testing</h3>
+        <p>
+          The hi-fi prototype tested whether the final visual design,
+          interactions, and conversion flows were clear enough, focusing on:
+        </p>
+        <ul className={UL}>
+          <li>first impression;</li>
+          <li>audience route selection;</li>
+          <li>vacancy browsing;</li>
+          <li>consultation flow;</li>
+          <li>open application;</li>
+          <li>visual credibility &amp; recruiter visibility;</li>
+          <li>post-submission reassurance.</li>
+        </ul>
+        <h3 className={H3}>Stakeholder review &amp; regression</h3>
+        <p>
+          The prototype was reviewed with internal Xentys stakeholders to confirm
+          it matched the organisation&rsquo;s recruitment model and business
+          needs. A short regression check then confirmed the main usability
+          issues had been addressed without introducing new friction.
+        </p>
+        <h3 className={H3}>Final iterations</h3>
+        <p>Refinements based on testing and stakeholder feedback included:</p>
+        <ul className={UL}>
+          <li>making the candidate CTA more visible;</li>
+          <li>improving the vacancy-filter hierarchy;</li>
+          <li>making vacancy cards clearly clickable;</li>
+          <li>changing the floating contact button into a labelled menu;</li>
+          <li>clarifying the consultation modal;</li>
+          <li>improving success states;</li>
+          <li>correcting smaller interaction and consistency issues.</li>
+        </ul>
       </Section>
 
       {/* ── OUTCOME ────────────────────────────────────────────────────── */}
@@ -518,29 +520,23 @@ export default function XentysCaseStudy() {
         }
       >
         <p>
-          The redesign is now in production, and I&rsquo;m building the frontend in
-          Next.js. What started as a research-led proposal became a real product:
-          a clearer structure for both audiences, trust signals brought forward,
-          improved vacancy browsing, guided conversion flows, and more
-          reassuring post-submission feedback.
+          The redesign is now in production. I&rsquo;m building the frontend in
+          Next.js, and the new site launches in July 2026. What started as a
+          research-led proposal became a real product: a clearer structure for
+          both audiences, trust signals brought forward, improved vacancy
+          browsing, guided conversion flows, and more reassuring post-submission
+          feedback.
         </p>
         <p>
           Final content, CMS integration, and accessibility compliance are part
           of the build, and I&rsquo;ll measure conversion once the site is live.
         </p>
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-14-before-after.webp`}
-          width={1920}
-          height={1080}
-          label="Before and redesigned homepage comparison"
-          caption="Matching homepage views make the structural and visual transformation immediately visible."
-        />
-        <AssetFigure
-          src={`${CASE_STUDY}/final/xentys-15-final-gallery.webp`}
-          width={1920}
-          height={1080}
-          label="Final Xentys product gallery"
-          caption="The finished visual story closes across the homepage, vacancies, employer consultation, and mobile interface."
+        <VideoSlot
+          src={`${SLOT}/home-new.mp4`}
+          poster={`${SLOT}/homepage-after.png`}
+          addr="xentys.nl"
+          label="Redesigned Xentys homepage"
+          caption="The redesigned homepage: two clear audience routes, trust signals brought forward, and a guided path to action."
         />
         <div className="mt-9 grid gap-6 sm:grid-cols-2">
           <BeforeAfter
@@ -644,7 +640,7 @@ function Section({
             {eyebrow}
           </span>
         </div>
-        <div className="min-w-0">
+        <div>
           <h2
             className="m-0 mb-8 max-w-[18ch] text-[clamp(30px,4.4vw,56px)] font-medium leading-[1.0] tracking-[-0.04em] [&_em]:font-serif [&_em]:font-normal"
           >
@@ -746,163 +742,6 @@ function BeforeAfter({
         ))}
       </ul>
     </div>
-  );
-}
-
-function ChapterLabel({ index, title }: { index: string; title: string }) {
-  return (
-    <div className="mb-6 mt-[clamp(64px,9vw,110px)] flex items-center gap-4 border-t border-line pt-6">
-      <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-        {index}
-      </span>
-      <h3 className="m-0 text-[clamp(24px,3vw,38px)] font-medium leading-[1.1] tracking-[-0.04em] text-cream">
-        {title}
-      </h3>
-    </div>
-  );
-}
-
-function VideoFigure({
-  src,
-  poster,
-  label,
-  caption,
-}: {
-  src: string;
-  poster: string;
-  label: string;
-  caption: string;
-}) {
-  return (
-    <figure className="m-0 my-9">
-      <video
-        src={src}
-        poster={poster}
-        aria-label={label}
-        muted
-        loop
-        autoPlay
-        playsInline
-        controls
-        style={{ maxHeight: "calc(100svh - 190px)", maxWidth: "100%" }}
-        className="mx-auto block max-h-[calc(100svh-190px)] max-w-full rounded-[14px] border border-line bg-[#0d2b55]"
-      />
-      <figcaption className="mt-3 max-w-[68ch] font-mono text-[11px] italic leading-[1.55] text-muted">
-        {caption}
-      </figcaption>
-    </figure>
-  );
-}
-
-function AssetFigure({
-  src,
-  width,
-  height,
-  label,
-  caption,
-  cream = false,
-}: {
-  src: string;
-  width: number;
-  height: number;
-  label: string;
-  caption: string;
-  cream?: boolean;
-}) {
-  return (
-    <figure className="m-0 my-9">
-      <Image
-        src={src}
-        alt={label}
-        width={width}
-        height={height}
-        sizes="(min-width: 768px) 880px, 100vw"
-        style={{
-          width: "100%",
-          height: "auto",
-          maxWidth: "100%",
-          maxHeight: "calc(100svh - 190px)",
-          objectFit: "contain",
-        }}
-        className={`mx-auto block h-auto max-h-[calc(100svh-190px)] w-full max-w-full rounded-[14px] border object-contain ${
-          cream ? "border-[rgb(33_26_18/0.16)]" : "border-line"
-        }`}
-      />
-      <figcaption
-        className={`mt-3 max-w-[68ch] font-mono text-[11px] italic leading-[1.55] ${
-          cream ? "text-[#5c5345]" : "text-muted"
-        }`}
-      >
-        {caption}
-      </figcaption>
-    </figure>
-  );
-}
-
-function EvidenceComparison() {
-  return (
-    <div className="my-9 grid items-center gap-5 lg:grid-cols-[1fr_0.72fr_1fr]">
-      <ImageCard
-        src={`${CASE_STUDY}/testing/xentys-11-testing-vacancies-before.png`}
-        width={640}
-        height={640}
-        label="Observed experience"
-        caption="The previous vacancy listing concentrated interaction around headings while formal CTAs received no clicks."
-      />
-      <div className="border-l-2 border-accent py-2 pl-5">
-        <span className="mb-3 block font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
-          Evidence to design response
-        </span>
-        <p className="m-0 text-[15px] leading-[1.55]">
-          <strong>Card 61:</strong> expose salary and useful role information.{" "}
-          <strong>Card 81:</strong> make client identity visible. Heatmap evidence
-          also showed 1,273 heading clicks and zero CTA clicks.
-        </p>
-      </div>
-      <ImageCard
-        src={`${CASE_STUDY}/testing/xentys-11-testing-vacancies-after.png`}
-        width={640}
-        height={640}
-        label="Design response"
-        caption="The redesigned listing brings role information, practical filters, and clear actions into one scannable view."
-      />
-    </div>
-  );
-}
-
-function ImageCard({
-  src,
-  width,
-  height,
-  label,
-  caption,
-}: {
-  src: string;
-  width: number;
-  height: number;
-  label: string;
-  caption: string;
-}) {
-  return (
-    <figure className="m-0 min-w-0">
-      <div className="overflow-hidden rounded-[12px] border border-line bg-[rgb(243_237_223/0.03)]">
-        <Image
-          src={src}
-          alt={label}
-          width={width}
-          height={height}
-          sizes="(min-width: 768px) 440px, 100vw"
-          style={{ width: "100%", height: "auto", maxWidth: "100%" }}
-          className="mx-auto h-auto max-h-[520px] w-auto max-w-full object-contain"
-        />
-      </div>
-      <figcaption className="mt-3 font-mono text-[10px] italic leading-[1.5] text-muted">
-        <span className="mb-1 block not-italic uppercase tracking-[0.12em] text-cream">
-          {label}
-        </span>
-        {caption}
-      </figcaption>
-    </figure>
   );
 }
 

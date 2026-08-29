@@ -93,27 +93,7 @@ export default async function ProjectPage({ params }: Props) {
                 </div>
               )}
             </div>
-            {slug === "xentys" ? (
-              <figure className="mx-auto mt-[54px] max-w-[1120px]">
-                <div
-                  className="relative aspect-video overflow-hidden rounded-[14px] border border-line bg-[#0d2b55]"
-                  style={{ aspectRatio: "16 / 9" }}
-                >
-                  <Image
-                    src="/assets/xentys/case-study/final/xentys-01-hero-system.webp"
-                    alt="Redesigned Xentys product system across desktop, mobile, vacancy, recruiter, and employer interfaces"
-                    fill
-                    priority
-                    sizes="(min-width: 1180px) 1120px, 100vw"
-                    className="object-contain"
-                  />
-                </div>
-                <figcaption className="mt-3 font-mono text-[11px] leading-[1.5] text-muted">
-                  One connected system for candidate discovery, employer
-                  consultation, recruiter trust, and responsive implementation.
-                </figcaption>
-              </figure>
-            ) : project.siteUrl ? (
+            {project.siteUrl ? (
               // Framed hero (browser-chrome window) for projects with a real site:
               // matches the in-article media; sized between the body media and full-bleed.
               <figure className="mx-auto mt-[54px] max-w-[1120px]">

@@ -34,7 +34,7 @@ export const projects: Project[] = [
     img: "/assets/xentys/homepage-after.png",
     title: "Xentys Recruitment",
     subtitle: "UX strategy · Website redesign",
-    copy: "A specialist recruitment website rebuilt from research into a clearer, trust-led conversion platform for clients and candidates, now in production for a July 2026 launch.",
+    copy: "A specialist recruitment website rebuilt from research into a clearer, trust-led conversion platform for clients and candidates, now in production.",
     year: "2026",
   },
   {
@@ -93,7 +93,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     tools:
       "Figma, FigJam, Next.js, TypeScript, Tailwind CSS, Plerdy, Google Analytics, Search Console, Lighthouse, WAVE",
     output:
-      "Research-led UX/UI redesign, now in production, launching July 2026",
+      "Research-led UX/UI redesign, now in production",
     siteUrl: "xentys.nl",
     next: "bouwkeet",
     nextTitle: <>Bouwkeet<br />Service design &amp; physical-digital system</>,
@@ -193,4 +193,3 @@ export const caseStudies: Record<string, CaseStudy> = {
     full: true,
   },
 };
-
